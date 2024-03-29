@@ -131,6 +131,19 @@ declare module "node-libgpiod" {
     requestInputModeFlags(consumer?: string, flags?: number): void;
   }
   
+
+  /**
+   * LineFlags
+   */
+  declare interface LineFlags {
+    GPIOD_LINE_REQUEST_FLAG_OPEN_DRAIN: 1;
+    GPIOD_LINE_REQUEST_FLAG_OPEN_SOURCE: 2;
+    GPIOD_LINE_REQUEST_FLAG_ACTIVE_LOW: 4;
+    GPIOD_LINE_REQUEST_FLAG_BIAS_DISABLE: 8;
+    GPIOD_LINE_REQUEST_FLAG_BIAS_PULL_DOWN: 16;
+    GPIOD_LINE_REQUEST_FLAG_BIAS_PULL_UP: 32;
+  }
+
   /**
    * Returns true if the libgpiod functionality is available in
    * the current execution environment, otherwise false (for example
