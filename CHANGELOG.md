@@ -1,5 +1,13 @@
 # changelog
 
+## 2024-03-29
+
+## 0.4.1
+
+- adding LineFlags definitions contributed by @d-beamon into index.d.ts
+- merging a performance improvement contributed by @alessandromrc
+- got a good direction on how to use the gpiod-sim <https://github.com/sombriks/node-libgpiod/issues/24>
+
 ## 2024-02-24
 
 ## 0.4.0
