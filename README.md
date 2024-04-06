@@ -1,6 +1,6 @@
 # [node-libgpiod](https://github.com/sombriks/node-libgpiod)
 
-Native nodejs bindings for [libgpiod](https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/about/)
+Native nodejs bindings for [libgpiod](https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/)
 
 [![npm](https://img.shields.io/npm/v/node-libgpiod?style=plastic)](https://www.npmjs.com/package/node-libgpiod)
 [![Build Status](https://github.com/sombriks/node-libgpiod/actions/workflows/node-test.yml/badge.svg?branch=main-1x)](https://github.com/sombriks/node-libgpiod/actions/workflows/node-test.yml)
@@ -195,9 +195,12 @@ for more sample code
 - [X] Chip/Line abstractions
 - [ ] GPIO monitoring callbacks
 - [ ] Bulk read/write
+- [ ] Complete API parity with underlying C/C++ library
 
 All features present on libgpiod eventually will be added to node bindings, then
 the node package will finally enter in 1.x series.
+
+Also see our [changelog](docs/CHANGELOG.md) for details.
 
 ## Contributing
 

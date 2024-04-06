@@ -1,4 +1,16 @@
-# changelog
+# Changelog
+
+Noteworthy changes
+
+## 2024-04-06
+
+## 0.4.2
+
+- adding compile flag so the wrapper work again with older libgpiod versions.
+  thanks @alejandroclaro and @splitice for the report, guidance and time.
+- working on docs to make people aware of api breaking even inside 1.x series of
+  libgpiod.
+- working on script to simulate mockup somehow
 
 ## 2024-03-29
 
