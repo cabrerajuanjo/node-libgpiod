@@ -134,6 +134,8 @@ declare module "node-libgpiod" {
 
   /**
    * LineFlags
+   * Those flags where introduced in libgpiod 1.5 and allows to fine tune how 
+   * line should behave.
    */
   declare interface LineFlags {
     GPIOD_LINE_REQUEST_FLAG_OPEN_DRAIN: 1;

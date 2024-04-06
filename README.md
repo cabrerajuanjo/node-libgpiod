@@ -1,9 +1,9 @@
-# node-libgpiod
+# [node-libgpiod](https://github.com/sombriks/node-libgpiod)
 
 Native nodejs bindings for [libgpiod](https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/about/)
 
 [![npm](https://img.shields.io/npm/v/node-libgpiod?style=plastic)](https://www.npmjs.com/package/node-libgpiod)
-![Build status](https://github.com/sombriks/node-libgpiod/actions/workflows/node-test.yml/badge.svg)
+[![Build Status](https://github.com/sombriks/node-libgpiod/actions/workflows/node-test.yml/badge.svg?branch=main-1x)](https://github.com/sombriks/node-libgpiod/actions/workflows/node-test.yml)
 [![MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 ## Requirements / Dependencies
@@ -51,8 +51,11 @@ npm i node-libgpiod
 - [LTPPxG2](https://tibbo.com/store/tps/ltpp3g2.html) with sp7021 SoC (32 bits, 512MB ram) running Yocto
 - [ROCK 5A](https://docs.radxa.com/en/rock5/rock5a/hardware/rock5a-gpio)
 
-Technically speaking it should work with any modern vanilla kernel and
-libgpio 1.x, we're still working on libgpio 2.x
+Technically speaking it should work with
+[any modern vanilla kernel](https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git)
+and libgpio 1.x.
+
+We're still working on [libgpio 2.x](https://github.com/sombriks/node-libgpiod/tree/main-2x)
 
 ## Status
 
@@ -131,6 +134,9 @@ for more sample code
 
 - libgpiod must be installed in the system correctly with development headers
   otherwise npm install will fail.
+- inside libgpiod 1.x series there is a set of new flags created on 1.5.x
+  version around 2019 and they where no back ported to previous ones gpiod
+  releases. Your build might break because of this, we're working on solve this.
 - node will garbage collect Chip and Line too early on certain cases. When
   writing the samples, sometimes the following error kept being thrown:
 
@@ -190,7 +196,8 @@ for more sample code
 - [ ] GPIO monitoring callbacks
 - [ ] Bulk read/write
 
-All features present on libgpiod eventually will be added to node bindings.
+All features present on libgpiod eventually will be added to node bindings, then
+the node package will finally enter in 1.x series.
 
 ## Contributing
 
