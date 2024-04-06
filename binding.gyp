@@ -10,14 +10,14 @@
                         "src/chip.cc",
                         "src/line.cc"
                     ],
-                    "include_dirs" : [
+                    "include_dirs": [
                         "<!(node -e \"require('nan')\")"
                     ],
-                    "libraries" : [
+                    "libraries": [
                         "-lgpiod"
                     ],
                     "cflags": [
-                        "-O3"
+                        "-O3", "-DOLD_LIBGPIOD"
                     ],
                     "lflags": [
                         "-flto"

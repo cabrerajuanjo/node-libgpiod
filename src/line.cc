@@ -17,6 +17,7 @@ NAN_MODULE_INIT(Line::Init) {
   Nan::SetPrototypeMethod(tpl, "requestOutputMode", requestOutputMode);
   Nan::SetPrototypeMethod(tpl, "release", release);
 
+#ifndef OLD_LIBGPIOD
   v8::Local<v8::Object> lineFlags = Nan::New<v8::Object>();
   Nan::Set(lineFlags, Nan::New("GPIOD_LINE_REQUEST_FLAG_OPEN_DRAIN").ToLocalChecked(), Nan::New(GPIOD_LINE_REQUEST_FLAG_OPEN_DRAIN));
   Nan::Set(lineFlags, Nan::New("GPIOD_LINE_REQUEST_FLAG_OPEN_SOURCE").ToLocalChecked(), Nan::New(GPIOD_LINE_REQUEST_FLAG_OPEN_SOURCE));
@@ -25,6 +26,7 @@ NAN_MODULE_INIT(Line::Init) {
   Nan::Set(lineFlags, Nan::New("GPIOD_LINE_REQUEST_FLAG_BIAS_PULL_DOWN").ToLocalChecked(), Nan::New(GPIOD_LINE_REQUEST_FLAG_BIAS_PULL_DOWN));
   Nan::Set(lineFlags, Nan::New("GPIOD_LINE_REQUEST_FLAG_BIAS_PULL_UP").ToLocalChecked(), Nan::New(GPIOD_LINE_REQUEST_FLAG_BIAS_PULL_UP));
   Nan::Set(target, Nan::New("LineFlags").ToLocalChecked(), lineFlags);
+#endif
 
   constructor.Reset(Nan::GetFunction(tpl).ToLocalChecked());
   Nan::Set(target, Nan::New("Line").ToLocalChecked(), Nan::GetFunction(tpl).ToLocalChecked());
