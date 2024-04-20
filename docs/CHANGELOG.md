@@ -2,6 +2,14 @@
 
 Noteworthy changes
 
+## 2024-04-20
+
+## 0.4.3
+
+- added a more expressive message in exceptions, bubbling the
+  [errno](https://en.wikipedia.org/wiki/Errno.h) value in message of thrown
+  exception, many thanks to @splitice
+
 ## 2024-04-06
 
 ## 0.4.2

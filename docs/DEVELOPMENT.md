@@ -78,11 +78,36 @@ make # solve several missing dependencies
 After compiling we can now load the new kernel module:
 
 ```bash
+# TBD
 ```
 
 ## Functionality parity
 
 This is the api parity table:
 
-| Function | C | Node |
-| -------- | - | ---- |
+| Description                   | Scope         | C/C++                          | Node                  |
+|-------------------------------|---------------|--------------------------------|-----------------------|
+| get line's instant value      | Miscellaneous | gpiod_ctxless_get_value        | getInstantLineValue   |
+| set line's instant value      | Miscellaneous | gpiod_ctxless_set_value        | setInstantLineValue   |
+| get number of lines in a chip | Chip          | gpiod_chip_num_lines           | getNumberOfLines      |
+| get chip name                 | Chip          | gpiod_chip_name                | getChipName           |
+| get chip label                | Chip          | gpiod_chip_label               | getChipLabel          |
+|                               | Line          | gpiod_line_offset              | getLineOffset         |
+|                               | Line          | gpiod_line_name                | getLineName           |
+|                               | Line          | gpiod_line_consumer            | getLineConsumer       |
+|                               | Line          | gpiod_line_get_value           | getValue              |
+|                               | Line          | gpiod_line_set_value           | setValue              |
+|                               | Line          | gpiod_line_request_input       | requestInputMode      |
+|                               | Line          | gpiod_line_request_input_flags | requestInputModeFlags |
+|                               | Line          | gpiod_line_request_output      | requestOutputMode     |
+|                               | Line          | gpiod_line_release             | release               |
+
+## Other implementations
+
+Those are other notable libgpiod wrapper implementations to take as reference.
+
+### Official C++ binding
+
+### Official Python binding
+
+### Golang binding
