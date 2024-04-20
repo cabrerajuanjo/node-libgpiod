@@ -68,7 +68,7 @@ NAN_METHOD(Line::getLineOffset) {
   }
   int ret = gpiod_line_offset(obj->getNativeLine());
   if (-1 == ret) {
-    Nan::ThrowError("::getLineOffset() failed");
+    Nan::ThrowError(Nan::ErrnoException(errno, "::getLineOffset"));
   } else
     info.GetReturnValue().Set(ret);
 }
@@ -107,7 +107,7 @@ NAN_METHOD(Line::getValue) {
   }
   int ret = gpiod_line_get_value(obj->getNativeLine());
   if (-1 == ret) {
-    Nan::ThrowError("::getValue() failed");
+    Nan::ThrowError(Nan::ErrnoException(errno, "::getValue"));
   } else
     info.GetReturnValue().Set(ret);
 }
@@ -117,7 +117,7 @@ NAN_METHOD(Line::setValue) {
   v8::Local<v8::Context> context = Nan::GetCurrentContext();
   uint32_t value = info[0]->Uint32Value(context).FromJust();
   if (gpiod_line_set_value(obj->line, value) == -1) {
-    return Nan::ThrowError("setValue() failed.");
+    Nan::ThrowError(Nan::ErrnoException(errno, "::setValue"));
   }
 }
 
@@ -129,19 +129,19 @@ NAN_METHOD(Line::requestInputMode) {
   }
   Nan::Utf8String consumer(info[0]);
   if (-1 == gpiod_line_request_input(obj->getNativeLine(), *consumer))
-    Nan::ThrowError("::requestInputMode() failed");
+    Nan::ThrowError(Nan::ErrnoException(errno, "::requestInputMode"));
 }
 
 NAN_METHOD(Line::requestInputModeFlags) {
   Line *obj = Nan::ObjectWrap::Unwrap<Line>(info.This());
   if (!obj->line) {
-    Nan::ThrowError("::requestInputModeFlags() for line==NULL");
+    Nan::ThrowError("::requestInputModeFlags for line==NULL");
     return;
   }
   Nan::Utf8String consumer(info[0]);
   int flags = Nan::To<int>(info[1]).FromJust();
   if (-1 == gpiod_line_request_input_flags(obj->getNativeLine(), *consumer, flags))
-    Nan::ThrowError("::requestInputModeFlags() failed");
+    Nan::ThrowError(Nan::ErrnoException(errno, "::requestInputModeFlags"));
 }
 
 NAN_METHOD(Line::requestOutputMode) {
@@ -163,7 +163,7 @@ NAN_METHOD(Line::requestOutputMode) {
 
   Nan::Utf8String consumer(info[1]);
   if (-1 == gpiod_line_request_output(obj->getNativeLine(), *consumer, value))
-    Nan::ThrowError("::requestOutputMode() failed");
+    Nan::ThrowError(Nan::ErrnoException(errno, "::requestOutputMode"));
 }
 
 NAN_METHOD(Line::release) {
