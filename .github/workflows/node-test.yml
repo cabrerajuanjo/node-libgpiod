@@ -14,9 +14,10 @@ jobs:
         # removing '14.x', for now
         version: ['16.x', '18.x', '20.x']
     steps:
-      - name: Install libgpiod
+      - name: Install libgpiod and other system dependencies
         run: | 
-          dnf install libgpiod libgpiod-devel libgpiod-utils nodejs-devel make g++ -y
+          dnf install libgpiod libgpiod-devel libgpiod-utils \
+            nodejs-devel make g++ kmod -y
           
       - name: Checkout
         uses: actions/checkout@v4
