@@ -204,6 +204,43 @@ the node package will finally enter in 1.x series.
 Also see our [changelog][changelog] and [project updates][project-updates] for 
 details.
 
+## Functionality parity
+
+This is the api parity table:
+
+| Description                                  | Scope         | C/C++                          | Node                  |
+|----------------------------------------------|---------------|--------------------------------|-----------------------|
+| get line's instant value                     | Miscellaneous | gpiod_ctxless_get_value        | getInstantLineValue   |
+| set line's instant value                     | Miscellaneous | gpiod_ctxless_set_value        | setInstantLineValue   |
+| get number of lines in a chip                | Chip          | gpiod_chip_num_lines           | getNumberOfLines      |
+| get chip name                                | Chip          | gpiod_chip_name                | getChipName           |
+| get chip label                               | Chip          | gpiod_chip_label               | getChipLabel          |
+| get line/pin offset number                   | Line          | gpiod_line_offset              | getLineOffset         |
+| get line/pin name                            | Line          | gpiod_line_name                | getLineName           |
+| get line/pin value                           | Line          | gpiod_line_get_value           | getValue              |
+| set line/pin value                           | Line          | gpiod_line_set_value           | setValue              |
+| get line consumer                            | Line          | gpiod_line_consumer            | getLineConsumer       |
+| set line for input (read)                    | Line          | gpiod_line_request_input       | requestInputMode      |
+| set line for input with [flags][input-flags] | Line          | gpiod_line_request_input_flags | requestInputModeFlags |
+| set line for output (write)                  | Line          | gpiod_line_request_output      | requestOutputMode     |
+| release the line                             | Line          | gpiod_line_release             | release               |
+
+## Other implementations
+
+Those are other notable libgpiod wrapper implementations:
+
+### Official C++ binding
+
+- https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/tree/bindings/cxx?h=v1.6.x
+
+### Official Python binding
+
+- https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/tree/bindings/python?h=v1.6.x
+
+### Golang binding
+
+### Rust binding
+
 ## Contributing
 
 This is open source, i am willing to evaluate PR's :sunglasses:
@@ -222,3 +259,4 @@ This is open source, i am willing to evaluate PR's :sunglasses:
 [udev-rules]: https://blog.oless.xyz/post/fedorarpigpio/#udev
 [changelog]: docs/CHANGELOG.md
 [project-updates]: https://github.com/sombriks/node-libgpiod/discussions/31
+[input-flags]: ./lib/line-flags.js

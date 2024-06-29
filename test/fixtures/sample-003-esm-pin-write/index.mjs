@@ -1,3 +1,3 @@
 /**
- * Make a led blink by writing into a pin 
+ * Make a led blink by writing into a pin
  */

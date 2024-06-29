@@ -1,31 +1,34 @@
-// prevent module being loaded on anything other than Linux
-const os = require('os');
+// Prevent module being loaded on anything other than Linux
+const os = require('node:os');
+
 if (os.type() === 'Linux') {
-    // entry point
-    const libgpiod = require('bindings')('node-libgpiod');
-    libgpiod.Chip.prototype.getLine = function getLine(n) {
-        return new libgpiod.Line(this, n);
-    };
+	// Entry point
+	const libgpiod = require('bindings')('node-libgpiod');
+	libgpiod.Chip.prototype.getLine = function (n) {
+		return new libgpiod.Line(this, n);
+	};
 
-    libgpiod.available = function () {
-        return true;
-    }
+	libgpiod.available = function () {
+		return true;
+	};
 
-    libgpiod.Pin = function Pin(n) {
-        // defaults to chip 0
-        const chip = new libgpiod.Chip(0);
-        const line = chip.getLine(n);
-        return line;
-    }
+	libgpiod.Pin = function (n) {
+		// Defaults to chip 0
+		const chip = new libgpiod.Chip(0);
+		const line = chip.getLine(n);
+		return line;
+	};
 
-    module.exports = libgpiod;
+	libgpiod.LineFlags = require('./lib/line-flags');
+
+	module.exports = libgpiod;
 } else {
-    const libgpiod = {
-        available: function () {
-            return false;
-        }
-    }
+	const libgpiod = {
+		available() {
+			return false;
+		},
+	};
 
-    module.exports = libgpiod;
+	module.exports = libgpiod;
 }
 

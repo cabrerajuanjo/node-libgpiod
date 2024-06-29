@@ -1,3 +1,3 @@
 /**
- * read pin value
+ * Read pin value
  */

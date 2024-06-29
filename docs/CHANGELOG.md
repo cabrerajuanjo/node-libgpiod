@@ -9,9 +9,11 @@ Noteworthy changes
   anymore.
 - did a fedora38 virtual machine and to my happy surprise this version has the
   gpio-sim kernel module built and offers libgpiod 1.6.4! best of two worlds.
-  pretty soon to tell if our testsuite will run on github actions, but at least
-  i can speed up things a little by coding into this vm instead of the smaller,
-  slower board.
+- github CI remains unable to run testsuite sadly, tweaked the yaml script to
+  use a fedora 38 container but it's just not the same thing.
+- on the plus side, thanks to the working gpio-sim on my dev environment i could
+  finally cover everything already implemented quite fast. time to look at the
+  issues and missing functions, notably bulk and watch operations.
 
 ## 2024-04-20
 

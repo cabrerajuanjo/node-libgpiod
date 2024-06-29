@@ -17,7 +17,7 @@
                         "-lgpiod"
                     ],
                     "cflags": [
-                        "-O3", "-DOLD_LIBGPIOD"
+                        "-O3"
                     ],
                     "lflags": [
                         "-flto"
