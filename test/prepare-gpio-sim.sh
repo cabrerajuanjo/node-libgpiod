@@ -31,8 +31,10 @@ for i in $(seq 1 40)
 do 
   mkdir -p /sys/kernel/config/gpio-sim/fakegpio/gpio-bank0/line$i
 done
+echo 40 > /sys/kernel/config/gpio-sim/fakegpio/gpio-bank0/num_lines
 echo 1 > /sys/kernel/config/gpio-sim/fakegpio/live
 gpiodetect 
 gpioinfo
+chmod a+rw /dev/gpiochip*
 
 echo "run sudo sh -c 'echo 0 > /sys/kernel/config/gpio-sim/fakegpio/live' to modify the simulator setup" 

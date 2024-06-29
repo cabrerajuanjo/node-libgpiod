@@ -3,6 +3,7 @@ const gpiod = require("..");
 const assert = require("assert");
 
 describe("libgpiod miscellaneous bindings", function () {
+
   it("should get libgpiod version", function (done) {
     console.log(gpiod.version());
     done();
@@ -31,4 +32,5 @@ describe("libgpiod miscellaneous bindings", function () {
       }
     }, 70);
   });
+
 });
