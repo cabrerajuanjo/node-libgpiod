@@ -4,8 +4,15 @@
   "author": {
     "name": "Leonardo Silveira",
     "email": "sombriks@gmail.com",
-    "url": "https://sombriks.com.br"
+    "url": "https://sombriks.com"
   },
+  "keywords": [
+    "libgpiod",
+    "node",
+    "linux",
+    "raspberrypi",
+    "raxdarock"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/sombriks/node-libgpiod.git"
