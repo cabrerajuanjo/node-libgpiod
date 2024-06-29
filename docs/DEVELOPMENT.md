@@ -59,24 +59,8 @@ There are two tools, two kernel modules, to help us on that endeavor:
 
 None of them seems to be available out of the box for my outdated setup.
 
-So [let's grab kernel sources][kernel] and build it:
-
-```bash
-wget https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snapshot/linux-6.2.tar.gz
-tar xvfz linux-6.2.tar.gz
-cd linux-6.2
-make mrproper
-cp /boot/config-$(uname -r) .config 
-echo 'CONFIG_GPIO_MOCKUP=m' >> .config
-make oldconfig
-make # solve several missing dependencies
-```
-
-After compiling we can now load the new kernel module:
-
-```bash
-# TBD
-```
+But there was [this thread][reddit-lead] and good
+[reference material][examples-native].
 
 [README]: ../README.md
 [gpiod-1.4]: https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/log/?h=v1.4.x
@@ -86,4 +70,5 @@ After compiling we can now load the new kernel module:
 [gpiod-2x-test]: https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/tree/tests/gpiod-test.c?h=v2.0.x
 [gpio-mockup]: https://docs.kernel.org/admin-guide/gpio/gpio-mockup.html
 [gpio-sim]: https://docs.kernel.org/admin-guide/gpio/gpio-sim.html
-[kernel]: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tag/?h=v6.2
+[reddit-lead]: https://www.reddit.com/r/raspberry_pi/comments/1aygn6h/comment/l3jn5ir/
+[examples-native]: https://github.com/starnight/libgpiod-example
