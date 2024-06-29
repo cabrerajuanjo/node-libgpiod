@@ -8,6 +8,7 @@ on:
 jobs:
   build-and-publish:
     runs-on: ubuntu-22.04
+    container: fedora:38
     strategy:
       matrix:
         # removing '14.x', for now
