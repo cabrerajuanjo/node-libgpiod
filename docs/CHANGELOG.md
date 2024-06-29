@@ -34,9 +34,10 @@ Noteworthy changes
 
 - Finally branched main into two distinct heads
 - Prepared a new virtual machine to be able to work with 1.x series
-- Still looking for a way to test the native part properly. Thre is gpiomock but
-  i can't find it built on any distro i tried (opensuse/fedora). for 2.x there
-  is gpio-sim, **IF** i figure out how to use it.
+- Still looking for a way to test the native part properly. There is
+  [gpiomock][gpiomock] but i can't find it built on any distro i tried
+  (opensuse/fedora). for 2.x there is gpio-sim, **IF** i figure out how to use
+  it correctly.
 - This same log entry on main-2x will be different.
 
 ## 2023-11-15
@@ -62,14 +63,19 @@ immediate attention.
 
 ### 0.3.0
 
-- Added Chip::getNumberOfLines which returns the number of available GPIO lines on the chip
+- Added Chip::getNumberOfLines which returns the number of available GPIO lines
+  on the chip
 - Added Chip::getChipName which returns chip's name as represented by the kernel
-- Added Chip::getChipLabel which returns chip's label as represented by the kernel
+- Added Chip::getChipLabel which returns chip's label as represented by the
+  kernel
 - Added Line::getLineOffset which returns line's offset number
 - Added Line::getLineName which returns line's name, if set, otherwise undefined
-- Added Line::getLineConsumer which returns line's consumer, if set, otherwise undefined
-- Extended the Typescript .d.ts file with the new methods and added jsdoc comments
-- Added a condition in the binding.gyp to prevent builds on non-Linux environments (aka development machines)
+- Added Line::getLineConsumer which returns line's consumer, if set, otherwise
+  undefined
+- Extended the Typescript .d.ts file with the new methods and added jsdoc
+  comments
+- Added a condition in the binding.gyp to prevent builds on non-Linux
+  environments (aka macs or Windows machines)
 
 ## 2022-04-15
 

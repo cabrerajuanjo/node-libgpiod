@@ -6,7 +6,7 @@ must be done to prepare the development environment for it.
 ## Environment setup
 
 To consume the library all it takes is to have node and libgpiod itself, just as
-described in the [README](../README.md).
+described in the [README][README].
 
 To extend it, however, you need to know better the libgpiod provided by the
 target platform.
@@ -15,9 +15,9 @@ target platform.
 
 So far, there is at least 3 big releases to be aware of:
 
-- [gpiod 1.4](https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/log/?h=v1.4.x)
-- [gpiod 1.6](https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/log/?h=v1.6.x)
-- [gpiod 2.0](https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/log/?h=v2.0.x)
+- [gpiod 1.4][gpiod-1.4]
+- [gpiod 1.6][gpiod-1.6]
+- [gpiod 2.0][gpiod-2.0]
 
 The 1.5 version introduced new functionality still present in 1.6, 1.4 can be
 considered the last in the "old" libgpiod still present on many systems out
@@ -43,12 +43,11 @@ thinking on other ways to work around this version issue.
 Proper test is another challenge.
 
 You see, the
-[example projects](https://github.com/sombriks/node-libgpiod-examples)
+[example projects][examples]
 exists because back then i had the time and the hardware to test it, but not the
 experience to write proper unit and integration tests involving this.
 
-But if the kernel module maintainer
-[wrote 100% software tests](https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/tree/tests/gpiod-test.c?h=v2.0.x),
+But if the kernel module maintainer [wrote 100% software tests][gpiod-2x-test],
 so can we!
 
 I hope so.
@@ -56,13 +55,11 @@ I hope so.
 ### Mocking and simulating
 
 There are two tools, two kernel modules, to help us on that endeavor:
-[gpio-mockup](https://docs.kernel.org/admin-guide/gpio/gpio-mockup.html) and
-[gpio-sim](https://docs.kernel.org/admin-guide/gpio/gpio-sim.html).
+[gpio-mockup][gpio-mockup] and [gpio-sim][gpio-sim].
 
 None of them seems to be available out of the box for my outdated setup.
 
-So [let's grab kernel sources](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tag/?h=v6.2)
-and build it:
+So [let's grab kernel sources][kernel] and build it:
 
 ```bash
 wget https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snapshot/linux-6.2.tar.gz
@@ -111,3 +108,13 @@ Those are other notable libgpiod wrapper implementations to take as reference.
 ### Official Python binding
 
 ### Golang binding
+
+[README]: ../README.md
+[gpiod-1.4]: https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/log/?h=v1.4.x
+[gpiod-1.6]: https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/log/?h=v1.6.x
+[gpiod-2.0]: https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/log/?h=v2.0.x
+[examples]: https://github.com/sombriks/node-libgpiod-examples
+[gpiod-2x-test]: https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/tree/tests/gpiod-test.c?h=v2.0.x
+[gpio-mockup]: https://docs.kernel.org/admin-guide/gpio/gpio-mockup.html
+[gpio-sim]: https://docs.kernel.org/admin-guide/gpio/gpio-sim.html
+[kernel]: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tag/?h=v6.2

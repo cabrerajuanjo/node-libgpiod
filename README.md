@@ -1,6 +1,6 @@
-# [node-libgpiod](https://github.com/sombriks/node-libgpiod)
+# [node-libgpiod][repo]
 
-Native nodejs bindings for [libgpiod](https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/)
+Native nodejs bindings for [libgpiod][libgpiod]
 
 [![npm](https://img.shields.io/npm/v/node-libgpiod?style=plastic)](https://www.npmjs.com/package/node-libgpiod)
 [![Build Status](https://github.com/sombriks/node-libgpiod/actions/workflows/node-test.yml/badge.svg?branch=main-1x)](https://github.com/sombriks/node-libgpiod/actions/workflows/node-test.yml)
@@ -42,20 +42,22 @@ Then just add it as a regular nodejs dependency:
 npm i node-libgpiod
 ```
 
-[node-gyp](https://www.npmjs.com/package/node-gyp) will do the rest for you.
+[node-gyp][node-gyp] will do the rest for you.
 
 ## Tested platforms
 
-- raspberry pi model 3 B+ (64 bits, 1GB ram) running fedora
-- raspberry pi zero w (32 bits, 512MB ram) running rasp pi os
-- [LTPPxG2](https://tibbo.com/store/tps/ltpp3g2.html) with sp7021 SoC (32 bits, 512MB ram) running Yocto
-- [ROCK 5A](https://docs.radxa.com/en/rock5/rock5a/hardware/rock5a-gpio)
+- [raspberry pi model 3 B+][rpi3b+] (64 bits, 1GB ram) running fedora
+- [raspberry pi zero w][rpi3zw] (32 bits, 512MB ram) running rasp pi os
+- [LTPPxG2][LTPPx62] with sp7021 SoC (32 bits, 512MB ram) running Yocto
+- [ROCK 5A][ROCK5A] (64 bits, 2GB ram), running debian
+- [ROCK 3C][ROCK3C] (64 bits, 2GB ram), running d
 
-Technically speaking it should work with
-[any modern vanilla kernel](https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git)
-and libgpio 1.x.
+Technically speaking it should work with [any modern vanilla kernel][libgpiod]
+and **libgpiod 1.x**.
 
-We're still working on [libgpio 2.x](https://github.com/sombriks/node-libgpiod/tree/main-2x)
+## What about libgpiod 2.x?
+
+We're still working on [libgpiod 2.x][libgpiod-2x]
 
 ## Status
 
@@ -112,19 +114,18 @@ app.listen(3000);
 console.log("running");
 ```
 
-See our [testcases](/test) for more information
+See our [testcases][test-suite] for more information
 
-See [node-libgpiod-examples](https://github.com/sombriks/node-libgpiod-examples)
+See [node-libgpiod-examples][examples]
 for more sample code
 
 ## known issues
 
-- libgpio 2.x series is around the corner and it's API is incompatible with 1.x
-  the 2.x branch (under development) will handle 2.x while 0.x and 1.x will
-  support libgpiod 1.x series.
+- libgpiod 2.x series is around the corner, and its API is incompatible with 1.x
+  the [2.x branch][libgpiod-2x] (under development) will handle 2.x while 0.x
+  and 1.x will support libgpiod 1.x series.
 
-- gpio character device needs
-  [special udev rules](https://blog.oless.xyz/post/fedorarpigpio/#udev) in order
+- gpio character device needs [special udev rules][udev-rules] in order
   to belong to a special group so non-root users could access it freely
 
   ```bash
@@ -135,10 +136,10 @@ for more sample code
 - libgpiod must be installed in the system correctly with development headers
   otherwise npm install will fail.
 - inside libgpiod 1.x series there is a set of new flags created on 1.5.x
-  version around 2019 and they where no back ported to previous ones gpiod
+  version around 2019 and they where no back ported to previous ones libgpiod
   releases. Your build might break because of this, we're working on solve this.
 - node will garbage collect Chip and Line too early on certain cases. When
-  writing the samples, sometimes the following error kept being thrown:
+  writing the samples, the following error kept being thrown:
 
   ```bash
   /home/sombriks/git/sample-node-libgpiod/index2.js:12
@@ -200,8 +201,24 @@ for more sample code
 All features present on libgpiod eventually will be added to node bindings, then
 the node package will finally enter in 1.x series.
 
-Also see our [changelog](docs/CHANGELOG.md) for details.
+Also see our [changelog][changelog] and [project updates][project-updates] for 
+details.
 
 ## Contributing
 
 This is open source, i am willing to evaluate PR's :sunglasses:
+
+[repo]: https://github.com/sombriks/node-libgpiod
+[libgpiod]: https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/
+[node-gyp]: https://www.npmjs.com/package/node-gyp
+[rpi3b+]: https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/
+[rpi3zw]: https://www.raspberrypi.com/products/raspberry-pi-zero-w/
+[LTPPx62]: https://tibbo.com/store/tps/ltpp3g2.html
+[ROCK5A]: https://radxa.com/products/rock5/5a
+[ROCK3C]: https://radxa.com/products/rock3/3c
+[libgpiod-2x]: https://github.com/sombriks/node-libgpiod/tree/main-2x
+[test-suite]: test
+[examples]: https://github.com/sombriks/node-libgpiod-examples
+[udev-rules]: https://blog.oless.xyz/post/fedorarpigpio/#udev
+[changelog]: docs/CHANGELOG.md
+[project-updates]: https://github.com/sombriks/node-libgpiod/discussions/31
