@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Install libgpiod
         run: | 
-          sudo apt-get install gpiod libgpiod2 libgpiod-dev libnode-dev -y
+          dnf install libgpiod libgpiod-devel libgpiod-utils nodejs-devel -y
           
       - name: Checkout
         uses: actions/checkout@v4
