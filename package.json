@@ -19,6 +19,7 @@
     "configure": "node-gyp configure",
     "build": "node-gyp build",
     "clean": "node-gyp clean",
+    "configure-gpio-sim": "sudo sh test/prepare-gpio-sim.sh",
     "test": "mocha",
     "test:coverage": "nyc npm run test"
   },
@@ -30,5 +31,8 @@
   "dependencies": {
     "bindings": "^1.3.0",
     "nan": "^2.11.1"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

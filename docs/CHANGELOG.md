@@ -2,6 +2,17 @@
 
 Noteworthy changes
 
+## 2024-06-29
+
+- acquired an [raxda rock 3c][https://radxa.com/products/rock3/3c/] so i can
+  test on real hardware again. my rasp collection is aging and isn't reliable
+  anymore.
+- did a fedora38 virtual machine and to my happy surprise this version has the
+  gpio-sim kernel module built and offers libgpiod 1.6.4! best of two worlds.
+  pretty soon to tell if our testsuite will run on github actions, but at least
+  i can speed up things a little by coding into this vm instead of the smaller,
+  slower board.
+
 ## 2024-04-20
 
 ## 0.4.3
