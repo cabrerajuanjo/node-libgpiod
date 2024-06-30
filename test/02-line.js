@@ -2,6 +2,10 @@ const assert = require('node:assert');
 const gpiod = require('../');
 
 describe('libgpiod line bindings', () => {
+
+	// undefined for our gpio-sim setup, GPIO17 for raspberry pi zero w
+	const lineName = process.env.LINE_NAME ?? undefined
+
 	it('should get a line from the chip', done => {
 		const chip0 = new gpiod.Chip('gpiochip0');
 		assert(chip0.getLine(17));
@@ -54,7 +58,7 @@ describe('libgpiod line bindings', () => {
 		const chip0 = new gpiod.Chip('gpiochip0');
 		const line17 = chip0.getLine(17);
 		const name = line17.getLineName();
-		assert.equal(undefined, name); // TODO in gpio-sim it's undefined
+		assert.equal(lineName, name);
 		line17.release();
 		done();
 	});

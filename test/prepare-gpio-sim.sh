@@ -27,7 +27,7 @@
 # chmod a+rw /dev/gpiochip*
 
 modprobe gpio-sim
-insmod /lib/modules/6.8.9-100.fc38.x86_64/kernel/drivers/gpio/gpio-sim.ko.xz
+# insmod /lib/modules/6.8.9-100.fc38.x86_64/kernel/drivers/gpio/gpio-sim.ko.xz
 
 for i in $(seq 1 40)
 do 
