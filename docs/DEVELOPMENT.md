@@ -33,7 +33,7 @@ still under development. It might be a bit challenging proper setup the system
 to compile against an older libgpiod version.
 
 Currently my recommendation is to setup a reasonable recent linux distro with
-the proper gpiod version (1.6).
+the proper gpiod version being worked on (1.6).
 
 I have a Fedora 38 virtual machine just for that purpose at the moment, but i am
 thinking on other ways to work around this version issue.
@@ -42,10 +42,9 @@ thinking on other ways to work around this version issue.
 
 Proper test is another challenge.
 
-You see, the
-[example projects][examples]
-exists because back then i had the time and the hardware to test it, but not the
-experience to write proper unit and integration tests involving this.
+You see, the [examples project][examples] exists because back then i had the
+time and the hardware to test it, but not the experience to write proper unit
+and integration tests involving this.
 
 But if the kernel module maintainer [wrote 100% software tests][gpiod-2x-test],
 so can we!
@@ -55,12 +54,15 @@ I hope so.
 ### Mocking and simulating
 
 There are two tools, two kernel modules, to help us on that endeavor:
-[gpio-mockup][gpio-mockup] and [gpio-sim][gpio-sim].
+[gpio-mockup][gpio-mockup], being discontinued, and [gpio-sim][gpio-sim], the
+maintained one.
 
-None of them seems to be available out of the box for my outdated setup.
+There is [this thread][reddit-lead] and good
+[reference material][examples-native] to get started with.
 
-But there was [this thread][reddit-lead] and good
-[reference material][examples-native].
+The fedora 38 setup offers node libgpiod 1.6.4 and gpio-sim, which is a good
+combo for 1.x series. But it's an EOL'ed distro, so some alternative must be
+worked on in near future in order to keep 1.x going on.
 
 [README]: ../README.md
 [gpiod-1.4]: https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/log/?h=v1.4.x
