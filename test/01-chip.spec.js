@@ -1,4 +1,4 @@
-const assert = require('node:assert');
+const { expect } = require('chai');
 const gpiod = require('..');
 
 describe('libgpiod chip bindings', () => {
@@ -8,27 +8,30 @@ describe('libgpiod chip bindings', () => {
 
 	it('should \'create\' a new chip by number', done => {
 		const chip0 = new gpiod.Chip('0');
-		assert.equal(numLines, chip0.getNumberOfLines());
+		expect(chip0.getNumberOfLines()).eq(numLines);
 		done();
 	});
 
 	it('should \'create\' a new chip by name', done => {
 		const chip0 = new gpiod.Chip('gpiochip0');
-		assert.equal(numLines, chip0.getNumberOfLines());
+		expect(chip0.getNumberOfLines()).eq(numLines);
 		done();
 	});
 
 	it('should \'create\' a new chip by path', done => {
 		const chip0 = new gpiod.Chip('/dev/gpiochip0');
-		assert.equal(numLines, chip0.getNumberOfLines());
+		expect(chip0.getNumberOfLines()).eq(numLines);
 		done();
 	});
 
 	it('should NOT \'create\' a chip because it does not exists', done => {
 		try {
 			const chip0 = new gpiod.Chip('/dev/gpiochippuden');
-			assert.equal(numLines, chip0.getNumberOfLines());
-		} catch {
+			chip0.getNumberOfLines()
+		} catch (e) {
+			expect(e.errno).eq(2)
+			expect(e.code).eq("ENOENT")
+			expect(e.syscall).eq("Chip::new - Unable to open device /dev/gpiochippuden")
 			done();
 		}
 	});

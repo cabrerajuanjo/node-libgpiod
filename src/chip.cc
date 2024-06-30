@@ -17,7 +17,9 @@ NAN_MODULE_INIT(Chip::Init) {
 
 Chip::Chip(const char *device) {
   chip = gpiod_chip_open_lookup(device);
-  if (!chip) Nan::ThrowError("Unable to open device");
+  std::string msg = "Chip::new - Unable to open device ";
+  msg = msg + device;
+  if (!chip) Nan::ThrowError(Nan::ErrnoException(errno, msg.c_str()));
 }
 
 Chip::~Chip() {
@@ -44,12 +46,12 @@ NAN_METHOD(Chip::New) {
 NAN_METHOD(Chip::getNumberOfLines) {
   Chip *obj = Nan::ObjectWrap::Unwrap<Chip>(info.This());
   if (!obj->chip) {
-    Nan::ThrowError("::getNumberOfLines() for chip==NULL");
+    Nan::ThrowError(Nan::ErrnoException(errno, "::getNumberOfLines() for chip==NULL"));
     return;
   }
   int ret = gpiod_chip_num_lines(obj->getNativeChip());
   if (-1 == ret) {
-    Nan::ThrowError("::getNumberOfLines() failed");
+    Nan::ThrowError(Nan::ErrnoException(errno, "::getNumberOfLines() failed"));
   } else
     info.GetReturnValue().Set(ret);
 }
@@ -57,12 +59,12 @@ NAN_METHOD(Chip::getNumberOfLines) {
 NAN_METHOD(Chip::getChipName) {
   Chip *obj = Nan::ObjectWrap::Unwrap<Chip>(info.This());
   if (!obj->chip) {
-    Nan::ThrowError("::getChipName() for chip==NULL");
+    Nan::ThrowError(Nan::ErrnoException(errno, "::getChipName() for chip==NULL"));
     return;
   }
   const char *name = gpiod_chip_name(obj->getNativeChip());
   if (!name) {
-    Nan::ThrowError("::getChipName() failed");
+    Nan::ThrowError(Nan::ErrnoException(errno, "::getChipName() failed"));
   } else
     info.GetReturnValue().Set(Nan::New<v8::String>(name).ToLocalChecked());
 }
@@ -70,12 +72,12 @@ NAN_METHOD(Chip::getChipName) {
 NAN_METHOD(Chip::getChipLabel) {
   Chip *obj = Nan::ObjectWrap::Unwrap<Chip>(info.This());
   if (!obj->chip) {
-    Nan::ThrowError("::getChipLabel() for chip==NULL");
+    Nan::ThrowError(Nan::ErrnoException(errno, "::getChipLabel() for chip==NULL"));
     return;
   }
   const char *label = gpiod_chip_label(obj->getNativeChip());
   if (!label) {
-    Nan::ThrowError("::getChipLabel() failed");
+    Nan::ThrowError(Nan::ErrnoException(errno, "::getChipLabel() failed"));
   } else
     info.GetReturnValue().Set(Nan::New<v8::String>(label).ToLocalChecked());
 }

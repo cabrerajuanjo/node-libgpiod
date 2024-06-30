@@ -1,22 +1,25 @@
-const assert = require('node:assert');
+const { expect } = require('chai');
 const gpiod = require('..');
 
 describe('libgpiod miscellaneous bindings', () => {
 	it('should get libgpiod version', done => {
-		assert.ok(gpiod.version());
+		expect(gpiod.version()).to.be.ok;
 		done();
 	});
 
 	it('should get line instant value', done => {
 		const value = gpiod.getInstantLineValue(0, 17);
-		assert.equal(0, value);
+		expect(value).to.eq(0);
 		done();
 	});
 
 	it('should NOT get line instant value due wrong chip name', done => {
 		try {
 			gpiod.getInstantLineValue('/dev/gpiochipZero', 17);
-		} catch {
+		} catch (e) {
+			expect(e.errno).eq(2)
+			expect(e.code).eq('ENOENT')
+			expect(e.syscall).eq('::getInstantLineValue - Unable to get instant value')
 			done();
 		}
 	});

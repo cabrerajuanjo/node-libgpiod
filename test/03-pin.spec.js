@@ -1,5 +1,5 @@
-const assert = require('assert');
-const gpiod = require('../');
+const { assert } = require('chai');
+const gpiod = require('..');
 
 describe('libgpiod Pin sugar', () => {
 	it('should create a Pin for line 10', done => {

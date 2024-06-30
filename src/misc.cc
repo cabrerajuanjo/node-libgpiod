@@ -14,7 +14,7 @@ NAN_METHOD(getInstantLineValue) {
 
   int value = -1;
   if (-1 == (value = gpiod_ctxless_get_value(*device, offset, active_low, *consumer))) {
-    Nan::ThrowError("Unable to get instant value");
+    Nan::ThrowError(Nan::ErrnoException(errno, "::getInstantLineValue - Unable to get instant value"));
     return;
   }
 
@@ -29,7 +29,7 @@ NAN_METHOD(setInstantLineValue) {
   Nan::Utf8String consumer(info[4]);
 
   if (-1 == gpiod_ctxless_set_value(*device, offset, value, active_low, *consumer, NULL, NULL)) {
-    Nan::ThrowError("Unable to get instant value");
+    Nan::ThrowError(Nan::ErrnoException(errno, "::setInstantLineValue - Unable to get instant value"));
     return;
   }
 

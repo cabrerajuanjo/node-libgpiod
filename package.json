@@ -27,11 +27,12 @@
     "build": "node-gyp build",
     "clean": "node-gyp clean",
     "configure-gpio-sim": "sh test/prepare-gpio-sim.sh",
-    "test": "mocha",
+    "test": "mocha test/*.spec.js test/**/*.spec.js",
     "test:coverage": "nyc npm run test",
     "lint": "xo --fix"
   },
   "devDependencies": {
+    "chai": "^4.4.1",
     "mocha": "10.1.0",
     "node-gyp": "^10.0.1",
     "nyc": "^15.1.0",

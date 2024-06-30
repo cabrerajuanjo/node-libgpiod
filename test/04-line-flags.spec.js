@@ -1,5 +1,5 @@
 const assert = require('node:assert');
-const gpiod = require('../');
+const gpiod = require('..');
 
 describe('libgpiod LineFlags sugar', () => {
   it('GPIOD_LINE_REQUEST_FLAG_OPEN_DRAIN', done => {
