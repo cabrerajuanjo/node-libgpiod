@@ -2,6 +2,14 @@
 
 Noteworthy changes
 
+## 2024-06-30
+
+- closed the oldest issue, issue #4, covered it with a specific test case
+- recomissioned chai. it must be v4 since it's a commonsjs project. more info
+  [here](https://github.com/chaijs/chai/issues/1561#issuecomment-1871878274).
+- CI/CD still broken, but if i self-host maybe i can get it working! time to
+  homelab again!
+
 ## 2024-06-29
 
 - acquired an [raxda rock 3c][https://radxa.com/products/rock3/3c/] so i can
