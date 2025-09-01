@@ -1,4 +1,29 @@
-export const InstantFlags: InstantFlags;
+export type InstantFlags = {
+  OPEN_DRAIN: 1,
+  OPEN_SOURCE: 2,
+  BIAS_DISABLE: 4,
+  PULL_DOWN: 8,
+  PULL_UP: 16,
+
+  Events: {
+    RISING_EDGE: 1,
+    FALLING_EDGE: 2,
+    BOTH_EDGES: 3,
+  };
+
+  Callbacks: {
+    TIMEOUT: 1,
+    RISING_EDGE: 2,
+    FALLING_EDGE: 3,
+  };
+
+  Returns: {
+    ERR: -1,
+    OK: 0,
+    STOP: 1,
+  };
+};
+
 export const version: string;
 export const chipNames: Array<string>;
 /**
@@ -78,7 +103,7 @@ export function setInstantLineValues(chipNumber: number, lineNumbers: Array<numb
  * @param {string} [options.consumer] - consumer name
  * @param {InstantFlags} [options.flags] - flags for the monitor
  */
-export function instantMonitorEvent(device: string | number, lineNumber: number, eventType: InstantFlags.Events, callback: Function, { timeout, activeLow, consumer, flags }?: {
+export function instantMonitorEvent(device: string | number, lineNumber: number, eventType: InstantFlags['Events'], callback: Function, { timeout, activeLow, consumer, flags }?: {
     timeout?: number;
     activeLow?: boolean;
     consumer?: string;
@@ -97,7 +122,7 @@ export function instantMonitorEvent(device: string | number, lineNumber: number,
  * @param {string} [options.consumer] - consumer name
  * @param {InstantFlags} [options.flags] - flags for the monitor
  */
-export function instantMonitorEvents(device: string | number, lineNumbers: number, eventType: InstantFlags.Events, callback: Function, { timeout, activeLow, consumer, flags }?: {
+export function instantMonitorEvents(device: string | number, lineNumbers: number, eventType: InstantFlags['Events'], callback: Function, { timeout, activeLow, consumer, flags }?: {
     timeout?: number;
     activeLow?: boolean;
     consumer?: string;

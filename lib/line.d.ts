@@ -189,7 +189,7 @@ export class Line {
      */
     lineRequest(config: {
         consumer: string;
-        requestType: Line.RequestType.Direction | Line.RequestType.Event;
+        requestType: typeof Line.RequestType.Direction | typeof Line.RequestType.Event;
         flags: {
             OPEN_DRAIN: number;
             /** < The line is an open-drain port. */

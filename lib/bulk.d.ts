@@ -102,7 +102,7 @@ export class Bulk {
    * @param {number[]} [values] - Values to set for the lines. Only used if the
    * direction is OUTPUT.
    */
-    updateConfig(direction: Line.RequestType.Direction, flags: {
+    updateConfig(direction: typeof Line.RequestType.Direction, flags: {
         OPEN_DRAIN: number;
         OPEN_SOURCE: number;
         ACTIVE_LOW: number;
@@ -202,4 +202,5 @@ export class Bulk {
     release(): void;
 }
 import { Chip } from "./chip";
+import { Line } from "./line";
 //# sourceMappingURL=bulk.d.ts.map
